@@ -1,5 +1,7 @@
 package application.domain.exceptions;
 
-public class InvalidOrderStateException {
-    
+public class InvalidOrderStateException extends RuntimeException {
+    public InvalidOrderStateException(String message) {
+        super(message);
+    }
 }

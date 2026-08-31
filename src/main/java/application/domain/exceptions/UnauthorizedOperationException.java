@@ -1,5 +1,7 @@
 package application.domain.exceptions;
 
-public class UnauthorizedOperationException {
-    
+public class UnauthorizedOperationException extends RuntimeException {
+    public UnauthorizedOperationException(String message) {
+        super(message);
+    }
 }

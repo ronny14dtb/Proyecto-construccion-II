@@ -1,5 +1,7 @@
 package application.domain.exceptions;
 
-public class InsufficientInventoryException {
-    
+public class InsufficientInventoryException extends RuntimeException {
+    public InsufficientInventoryException(String message) {
+        super(message);
+    }
 }
