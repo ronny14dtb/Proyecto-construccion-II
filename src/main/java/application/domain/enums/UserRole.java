@@ -1,4 +1,4 @@
-package application.enums;
+package application.domain.enums;
 
 public enum UserRole {
     COMPRADOR,
