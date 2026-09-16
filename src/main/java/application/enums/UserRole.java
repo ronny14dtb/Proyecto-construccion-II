@@ -1,9 +1,0 @@
-package application.enums;
-
-public enum UserRole {
-    COMPRADOR,
-    VENDEDOR,
-    OPERADOR_LOGISTICO,
-    ADMINISTRADOR,
-    SUPERVISOR
-}
