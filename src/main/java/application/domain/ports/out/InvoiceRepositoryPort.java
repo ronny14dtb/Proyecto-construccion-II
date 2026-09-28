@@ -1,5 +1,9 @@
 package application.domain.ports.out;
 
-public class InvoiceRepositoryPort {
-    
+import application.domain.models.Invoice;
+import java.util.Optional;
+
+public interface InvoiceRepositoryPort {
+    Invoice save(Invoice invoice);
+    Optional<Invoice> findById(String id);
 }

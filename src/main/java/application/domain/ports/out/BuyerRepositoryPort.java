@@ -1,5 +1,9 @@
-package application.domain.ports.out;
+ppackage application.domain.ports.out;
 
-public class BuyerRepositoryPort {
-    
+import application.domain.models.Buyer;
+import java.util.Optional;
+
+public interface BuyerRepositoryPort {
+    Buyer save(Buyer buyer);
+    Optional<Buyer> findById(String id);
 }

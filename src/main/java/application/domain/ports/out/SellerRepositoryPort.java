@@ -1,5 +1,9 @@
 package application.domain.ports.out;
 
-public class SellerRepositoryPort {
-    
+import application.domain.models.Seller;
+import java.util.Optional;
+
+public interface SellerRepositoryPort {
+    Seller save(Seller seller);
+    Optional<Seller> findById(String id);
 }
