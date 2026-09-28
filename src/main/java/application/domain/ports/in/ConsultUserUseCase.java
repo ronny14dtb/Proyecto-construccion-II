@@ -1,3 +1,3 @@
 package application.domain.ports.in;
 import application.domain.models.User;
-public interface RegisterUserUseCase { User registerUser(User user); }
+public interface ConsultUserUseCase { User getUserById(String userId); }

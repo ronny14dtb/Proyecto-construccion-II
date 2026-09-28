@@ -1,4 +1,4 @@
-ppackage application.domain.ports.out;
+package application.domain.ports.out;
 
 import application.domain.models.Buyer;
 import java.util.Optional;
