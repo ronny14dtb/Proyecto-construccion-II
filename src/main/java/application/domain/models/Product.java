@@ -47,4 +47,5 @@ public class Product {
     public ProductStatus getStatus() { return status; }
     public Seller getSeller() { return seller; }
     public List<ProductVariant> getVariants() { return variants; }
+    
 }

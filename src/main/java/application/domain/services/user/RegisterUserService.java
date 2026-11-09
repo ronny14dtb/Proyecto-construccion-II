@@ -17,8 +17,17 @@ public class RegisterUserService implements RegisterUserUseCase {
     @Override
     public User registerUser(User user) {
         if (user == null) {
-            throw new IllegalArgumentException("User cannot be null");
+            throw new IllegalArgumentException("El usuario a registrar no puede ser nulo");
         }
+        if (userRepository.existsById(user.getId())) {
+            throw new IllegalArgumentException("Ya existe una cuenta registrada con el ID/Documento: " + user.getId());
+        }
+
+        String emailString = user.getEmail().toString(); 
+        if (userRepository.existsByEmail(emailString)) {
+            throw new IllegalArgumentException("El correo electrónico ya se encuentra registrado: " + emailString);
+        }
+        
         return userRepository.save(user);
     }
 }

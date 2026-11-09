@@ -7,4 +7,6 @@ public interface UserRepositoryPort {
     User save(User user);
     Optional<User> findById(String id);
     Optional<User> findByEmail(String email);
+    boolean existsById(String id);
+    boolean existsByEmail(String email);
 }
