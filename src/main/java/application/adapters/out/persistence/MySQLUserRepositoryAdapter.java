@@ -9,12 +9,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component
+
 public class MySQLUserRepositoryAdapter implements UserRepositoryPort {
 
     private final UserJpaRepository jpaRepository;
     private final UserPersistenceMapper mapper;
-
 
     public MySQLUserRepositoryAdapter(UserJpaRepository jpaRepository, UserPersistenceMapper mapper) {
         this.jpaRepository = jpaRepository;

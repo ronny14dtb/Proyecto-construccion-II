@@ -20,7 +20,6 @@ public class UserPersistenceMapper {
         );
     }
 
-    /
     public User toDomain(UserEntity entity) {
         User user = new User(
                 entity.getId(),

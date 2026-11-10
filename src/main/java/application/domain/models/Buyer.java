@@ -35,11 +35,12 @@ public class Buyer {
     public void restrictBuyer() {
         this.buyerStatus = BuyerStatus.RESTRINGIDO;
     }
+    public void setBuyerId(String buyerId) { this.buyerId = buyerId; }
 
     public boolean canPlaceOrder() {
         return this.buyerStatus == BuyerStatus.HABILITADO && user.getStatus() == application.domain.enums.UserStatus.ACTIVO;
     }
-
+    public Buyer() {}
     public String getBuyerId() { return buyerId; }
     public User getUser() { return user; }
     public Address getPrimaryAddress() { return primaryAddress; }
