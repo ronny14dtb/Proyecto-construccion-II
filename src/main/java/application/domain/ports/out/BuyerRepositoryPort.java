@@ -5,5 +5,5 @@ import java.util.Optional;
 
 public interface BuyerRepositoryPort {
     Buyer save(Buyer buyer);
-    Optional<Buyer> findById(String id);
+    Optional<Buyer> findById(Long id);
 }

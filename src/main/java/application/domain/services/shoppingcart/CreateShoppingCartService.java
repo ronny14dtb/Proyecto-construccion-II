@@ -8,15 +8,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateShoppingCartService implements CreateShoppingCartUseCase {
 
-    private final ShoppingCartRepositoryPort repositoryPort;
+    private final ShoppingCartRepositoryPort shoppingCartRepositoryPort;
 
-    public CreateShoppingCartService(ShoppingCartRepositoryPort repositoryPort) {
-        this.repositoryPort = repositoryPort;
+    public CreateShoppingCartService(ShoppingCartRepositoryPort shoppingCartRepositoryPort) {
+        this.shoppingCartRepositoryPort = shoppingCartRepositoryPort;
     }
 
     @Override
-    public ShoppingCart createCart(ShoppingCart cart) {
-        // Si quisieras, aquí validarías datos antes de guardar
-        return repositoryPort.save(cart);
+    public ShoppingCart createCart(ShoppingCart shoppingCart) {
+        return shoppingCartRepositoryPort.save(shoppingCart);
     }
 }

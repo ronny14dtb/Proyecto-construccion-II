@@ -25,6 +25,11 @@ public class Buyer {
         this.additionalAddresses = new ArrayList<>();
         this.buyerStatus = BuyerStatus.HABILITADO;
     }
+    public Buyer(String buyerId) {
+    this.buyerId = buyerId;
+    this.additionalAddresses = new ArrayList<>();
+    this.buyerStatus = BuyerStatus.HABILITADO;
+}
 
     public void addAdditionalAddress(Address address) {
         if (address != null && !additionalAddresses.contains(address)) {

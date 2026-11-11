@@ -26,8 +26,8 @@ public class MySQLBuyerRepositoryAdapter implements BuyerRepositoryPort {
     }
 
     @Override
-    public Optional<Buyer> findById(String id) {
-        return jpaRepository.findById(Long.valueOf(id)).map(mapper::toDomain);
+    public Optional<Buyer> findById(Long id) {
+        return jpaRepository.findById(id).map(mapper::toDomain);
     }
 
  
