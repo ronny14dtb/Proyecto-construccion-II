@@ -2,6 +2,7 @@ package application.domain.services.user;
 
 import application.domain.models.User;
 import application.domain.ports.in.RegisterUserUseCase;
+import application.domain.ports.out.PasswordEncoderPort;
 import application.domain.ports.out.UserRepositoryPort;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,12 @@ import org.springframework.stereotype.Service;
 public class RegisterUserService implements RegisterUserUseCase {
     
     private final UserRepositoryPort userRepository;
+    private final PasswordEncoderPort passwordEncoder; 
 
-    public RegisterUserService(UserRepositoryPort userRepository) {
+
+    public RegisterUserService(UserRepositoryPort userRepository, PasswordEncoderPort passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -28,6 +32,10 @@ public class RegisterUserService implements RegisterUserUseCase {
             throw new IllegalArgumentException("El correo electrónico ya se encuentra registrado: " + emailString);
         }
         
+
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
         return userRepository.save(user);
     }
 }

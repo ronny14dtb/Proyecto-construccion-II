@@ -2,7 +2,7 @@ package application.adapters.out.persistence;
 
 import application.adapters.out.persistence.entities.InvoiceEntity;
 import application.adapters.out.persistence.mappers.InvoicePersistenceMapper;
-import application.adapters.out.persistence.repositories.InvoiceJpaRepository;
+import application.adapters.out.persistence.repositories.jpa.InvoiceJpaRepository;
 import application.domain.models.Invoice;
 import application.domain.ports.out.InvoiceRepositoryPort;
 

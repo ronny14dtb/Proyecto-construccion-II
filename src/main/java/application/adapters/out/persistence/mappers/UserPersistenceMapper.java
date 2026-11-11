@@ -13,7 +13,7 @@ public class UserPersistenceMapper {
         return new UserEntity(
                 user.getId(),
                 user.getFullName(),
-                user.getEmail().toString(), 
+                user.getEmail().getValue(), 
                 user.getRole().name(),
                 user.getPassword(),
                 user.getStatus().name()

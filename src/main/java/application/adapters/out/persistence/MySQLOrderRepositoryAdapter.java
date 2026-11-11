@@ -2,7 +2,7 @@ package application.adapters.out.persistence;
 
 import application.adapters.out.persistence.entities.OrderEntity;
 import application.adapters.out.persistence.mappers.OrderPersistenceMapper;
-import application.adapters.out.persistence.repositories.OrderJpaRepository;
+import application.adapters.out.persistence.repositories.jpa.OrderJpaRepository;
 import application.domain.models.Order;
 import application.domain.ports.out.OrderRepositoryPort;
 

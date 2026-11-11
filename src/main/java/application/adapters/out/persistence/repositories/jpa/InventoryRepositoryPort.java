@@ -1,4 +1,4 @@
-package application.adapters.out.persistence.repositories;
+package application.adapters.out.persistence.repositories.jpa;
 
 import application.domain.models.Inventory;
 import java.util.Optional;

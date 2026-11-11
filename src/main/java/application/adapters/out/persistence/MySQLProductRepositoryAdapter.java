@@ -2,7 +2,7 @@ package application.adapters.out.persistence;
 
 import application.adapters.out.persistence.entities.ProductEntity;
 import application.adapters.out.persistence.mappers.ProductPersistenceMapper;
-import application.adapters.out.persistence.repositories.ProductJpaRepository;
+import application.adapters.out.persistence.repositories.jpa.ProductJpaRepository;
 import application.domain.models.Product;
 import application.domain.ports.out.ProductRepositoryPort;
 

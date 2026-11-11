@@ -14,6 +14,12 @@ public class Seller {
         this.storeName = storeName.trim();
     }
 
+    public Seller() {}
+    
+    public void setSellerId(String sellerId) { 
+        this.sellerId = sellerId; 
+    }
+
     public String getSellerId() { return sellerId; }
     public User getUser() { return user; }
     public String getStoreName() { return storeName; }

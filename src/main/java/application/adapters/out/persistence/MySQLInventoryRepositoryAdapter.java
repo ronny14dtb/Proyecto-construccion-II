@@ -2,7 +2,7 @@ package application.adapters.out.persistence;
 
 import application.adapters.out.persistence.entities.InventoryEntity;
 import application.adapters.out.persistence.mappers.InventoryPersistenceMapper;
-import application.adapters.out.persistence.repositories.InventoryJpaRepository;
+import application.adapters.out.persistence.repositories.jpa.InventoryJpaRepository;
 import application.domain.models.Inventory;
 import application.domain.ports.out.InventoryRepositoryPort;
 

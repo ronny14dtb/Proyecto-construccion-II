@@ -2,7 +2,7 @@ package application.adapters.out.persistence;
 
 import application.adapters.out.persistence.entities.BuyerEntity;
 import application.adapters.out.persistence.mappers.BuyerPersistenceMapper;
-import application.adapters.out.persistence.repositories.BuyerJpaRepository;
+import application.adapters.out.persistence.repositories.jpa.BuyerJpaRepository;
 import application.domain.models.Buyer;
 import application.domain.ports.out.BuyerRepositoryPort;
 

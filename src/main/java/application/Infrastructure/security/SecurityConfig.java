@@ -21,14 +21,13 @@ public class SecurityConfig {
         this.jwtAuthFilter = jwtAuthFilter;
     }
 
-    @Bean
+   @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable()) 
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
             .authorizeHttpRequests(auth -> auth
-
-                .requestMatchers("/api/auth/**", "/api/users/register").permitAll() 
+                .requestMatchers("/api/auth/**", "/api/users/register", "/api/users/login","/api/carts/**", "/api/orders/**").permitAll() 
 
                 .anyRequest().authenticated() 
             )

@@ -2,7 +2,7 @@ package application.adapters.out.persistence;
 
 import application.adapters.out.persistence.entities.UserEntity;
 import application.adapters.out.persistence.mappers.UserPersistenceMapper;
-import application.adapters.out.persistence.repositories.UserJpaRepository;
+import application.adapters.out.persistence.repositories.jpa.UserJpaRepository;
 import application.domain.models.User;
 import application.domain.ports.out.UserRepositoryPort;
 import org.springframework.stereotype.Component;

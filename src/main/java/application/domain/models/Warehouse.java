@@ -15,6 +15,12 @@ public class Warehouse {
         this.isMarketplaceOwned = isMarketplaceOwned;
     }
 
+    public Warehouse() {}
+    
+    public void setWarehouseId(String warehouseId) { 
+        this.warehouseId = warehouseId; 
+    }
+
     public String getWarehouseId() { return warehouseId; }
     public String getName() { return name; }
     public Address getLocation() { return location; }
