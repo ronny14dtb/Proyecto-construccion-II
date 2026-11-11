@@ -21,23 +21,27 @@ public class SecurityConfig {
         this.jwtAuthFilter = jwtAuthFilter;
     }
 
-   @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf(csrf -> csrf.disable()) 
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/api/users/register", "/api/users/login", "/api/orders/**").permitAll()
-                .requestMatchers("/api/shipments", "/api/shipments/**").permitAll() 
-                .requestMatchers("/api/returns", "/api/returns/**").permitAll()
-                .requestMatchers("/api/reports/**").permitAll()
+  @Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf(csrf -> csrf.disable()) 
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/api/auth/**", "/api/users/register", "/api/users/login", "/api/orders/**").permitAll()
+            .requestMatchers("/api/shipments", "/api/shipments/**").permitAll() 
+            .requestMatchers("/api/returns", "/api/returns/**").permitAll()
+            .requestMatchers("/api/reports/**").permitAll()
+            .requestMatchers("/api/sellers/**").permitAll()
+            .requestMatchers("/api/products/**").permitAll()
+            .requestMatchers("/api/inventory/**").permitAll()
+            .requestMatchers("/api/carts/**", "/api/carts").permitAll() // <--- ¡Agrégalo aquí!
 
-                .anyRequest().authenticated() 
-            )
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+            .anyRequest().authenticated() 
+        )
+        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
-    }
+    return http.build();
+}
 
 
     @Bean

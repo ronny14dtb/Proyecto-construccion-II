@@ -1,13 +1,19 @@
 package application.adapters.out.persistence;
 
-import application.adapters.out.persistence.entities.ProductEntity;
 import application.adapters.out.persistence.mappers.ProductPersistenceMapper;
 import application.adapters.out.persistence.repositories.jpa.ProductJpaRepository;
 import application.domain.models.Product;
 import application.domain.ports.out.ProductRepositoryPort;
 
-import java.util.Optional;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Repository
+@Primary
 public class MySQLProductRepositoryAdapter implements ProductRepositoryPort {
 
     private final ProductJpaRepository jpaRepository;
@@ -20,16 +26,20 @@ public class MySQLProductRepositoryAdapter implements ProductRepositoryPort {
 
     @Override
     public Product save(Product product) {
-        ProductEntity entity = mapper.toEntity(product);
-        ProductEntity savedEntity = jpaRepository.save(entity);
-        return mapper.toDomain(savedEntity);
+        var entity = mapper.toEntity(product);
+        var saved = jpaRepository.save(entity);
+        return mapper.toDomain(saved);
     }
 
     @Override
-    public Optional<Product> findById(String id) {
-        return jpaRepository.findById(id).map(mapper::toDomain);
+    public Optional<Product> findByProductId(String productId) {
+        return jpaRepository.findById(productId).map(mapper::toDomain);
     }
 
-    // Si la interfaz ProductRepositoryPort tiene otros métodos (como findAll, etc.),
-    // te pedirá que los agregues aquí. Si no, con esto es suficiente.
+    @Override
+    public List<Product> findBySellerId(String sellerId) {
+        return jpaRepository.findBySellerId(sellerId).stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+    }
 }

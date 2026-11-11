@@ -2,25 +2,19 @@ package application.domain.models;
 
 public class Seller {
     private String sellerId;
-    private User user;
     private String storeName;
+    private String email;
+    private String status;
 
-    public Seller(String sellerId, User user, String storeName) {
-        if (user == null || storeName == null || storeName.trim().isEmpty()) {
-            throw new IllegalArgumentException("Los datos del vendedor son inválidos");
-        }
+    public Seller(String sellerId, String storeName, String email, String status) {
         this.sellerId = sellerId;
-        this.user = user;
-        this.storeName = storeName.trim();
-    }
-
-    public Seller() {}
-    
-    public void setSellerId(String sellerId) { 
-        this.sellerId = sellerId; 
+        this.storeName = storeName;
+        this.email = email;
+        this.status = status;
     }
 
     public String getSellerId() { return sellerId; }
-    public User getUser() { return user; }
     public String getStoreName() { return storeName; }
+    public String getEmail() { return email; }
+    public String getStatus() { return status; }
 }

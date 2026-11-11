@@ -7,19 +7,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class SellerPersistenceMapper {
 
-   public SellerEntity toEntity(Seller seller) {
-        if (seller == null) return null;
-
-        SellerEntity entity = new SellerEntity();
-        entity.setSellerId(seller.getSellerId()); 
-        return entity;
+    public SellerEntity toEntity(Seller seller) {
+        return new SellerEntity(
+                seller.getSellerId(),
+                seller.getStoreName(),
+                seller.getEmail(),
+                seller.getStatus()
+        );
     }
 
     public Seller toDomain(SellerEntity entity) {
-        if (entity == null) return null;
-
-        Seller seller = new Seller(); 
-        seller.setSellerId(entity.getSellerId());
-        return seller;
+        return new Seller(
+                entity.getSellerId(),
+                entity.getStoreName(),
+                entity.getEmail(),
+                entity.getStatus()
+        );
     }
 }

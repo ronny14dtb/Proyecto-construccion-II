@@ -1,13 +1,14 @@
 package application.adapters.out.persistence;
 
-import application.adapters.out.persistence.entities.SellerEntity;
 import application.adapters.out.persistence.mappers.SellerPersistenceMapper;
 import application.adapters.out.persistence.repositories.jpa.SellerJpaRepository;
 import application.domain.models.Seller;
 import application.domain.ports.out.SellerRepositoryPort;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public class MySQLSellerRepositoryAdapter implements SellerRepositoryPort {
 
     private final SellerJpaRepository jpaRepository;
@@ -20,13 +21,13 @@ public class MySQLSellerRepositoryAdapter implements SellerRepositoryPort {
 
     @Override
     public Seller save(Seller seller) {
-        SellerEntity entity = mapper.toEntity(seller);
-        SellerEntity savedEntity = jpaRepository.save(entity);
+        var entity = mapper.toEntity(seller);
+        var savedEntity = jpaRepository.save(entity);
         return mapper.toDomain(savedEntity);
     }
 
     @Override
-    public Optional<Seller> findById(String id) {
-        return jpaRepository.findById(id).map(mapper::toDomain);
+    public Optional<Seller> findBySellerId(String sellerId) {
+        return jpaRepository.findById(sellerId).map(mapper::toDomain);
     }
 }

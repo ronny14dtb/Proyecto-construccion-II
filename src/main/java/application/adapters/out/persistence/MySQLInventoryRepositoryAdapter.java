@@ -1,14 +1,16 @@
 package application.adapters.out.persistence;
 
-import application.adapters.out.persistence.entities.InventoryEntity;
 import application.adapters.out.persistence.mappers.InventoryPersistenceMapper;
 import application.adapters.out.persistence.repositories.jpa.InventoryJpaRepository;
 import application.domain.models.Inventory;
 import application.domain.ports.out.InventoryRepositoryPort;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
-import java.util.Objects;
 import java.util.Optional;
 
+@Primary
+@Repository
 public class MySQLInventoryRepositoryAdapter implements InventoryRepositoryPort {
 
     private final InventoryJpaRepository jpaRepository;
@@ -21,21 +23,13 @@ public class MySQLInventoryRepositoryAdapter implements InventoryRepositoryPort 
 
     @Override
     public Inventory save(Inventory inventory) {
-        InventoryEntity entity = mapper.toEntity(inventory);
-        InventoryEntity savedEntity = jpaRepository.save(entity);
-        return mapper.toDomain(savedEntity);
-    }
-
-    public Optional<Inventory> findById(String id) {
-        return jpaRepository.findById(id).map(mapper::toDomain);
+        var entity = mapper.toEntity(inventory);
+        var saved = jpaRepository.save(entity);
+        return mapper.toDomain(saved);
     }
 
     @Override
-    public Optional<Inventory> findByProductIdAndWarehouseId(String productId, String warehouseId) {
-        return jpaRepository.findAll().stream()
-            .filter(entity -> Objects.equals(entity.getProductId(), productId)
-                && Objects.equals(entity.getWarehouseId(), warehouseId))
-            .findFirst()
-            .map(mapper::toDomain);
+    public Optional<Inventory> findByProductId(String productId) {
+        return jpaRepository.findByProductId(productId).map(mapper::toDomain);
     }
 }

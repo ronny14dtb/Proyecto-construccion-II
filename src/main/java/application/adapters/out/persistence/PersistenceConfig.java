@@ -15,21 +15,15 @@ import application.adapters.out.persistence.repositories.jpa.BuyerJpaRepository;
 import application.adapters.out.persistence.repositories.jpa.InventoryJpaRepository;
 import application.adapters.out.persistence.repositories.jpa.InvoiceJpaRepository;
 import application.adapters.out.persistence.repositories.jpa.OrderJpaRepository;
-import application.adapters.out.persistence.repositories.jpa.ProductJpaRepository;
-import application.adapters.out.persistence.repositories.jpa.RefundJpaRepository;
 import application.adapters.out.persistence.repositories.jpa.SellerJpaRepository;
-import application.adapters.out.persistence.repositories.jpa.ShipmentJpaRepository;
 import application.adapters.out.persistence.repositories.jpa.UserJpaRepository;
 import application.adapters.out.persistence.repositories.jpa.WarehouseJpaRepository;
-import application.adapters.out.persistence.repositories.mongo.ShoppingCartMongoRepository;
 import application.domain.ports.out.BuyerRepositoryPort;
 import application.domain.ports.out.InventoryRepositoryPort;
 import application.domain.ports.out.InvoiceRepositoryPort;
 import application.domain.ports.out.OrderRepositoryPort;
 import application.domain.ports.out.UserRepositoryPort;
 import application.domain.ports.out.WarehouseRepositoryPort;
-import application.adapters.out.persistence.mappers.ProductPersistenceMapper;
-import application.domain.ports.out.ProductRepositoryPort;
 import application.domain.ports.out.SellerRepositoryPort;
 
 
@@ -49,14 +43,6 @@ public class PersistenceConfig {
         return new MySQLBuyerRepositoryAdapter(buyerJpaRepository, buyerPersistenceMapper);
     }
 
-    @Bean
-    public ProductRepositoryPort productRepositoryPort(ProductJpaRepository productJpaRepository, ProductPersistenceMapper productPersistenceMapper) {
-        return new MySQLProductRepositoryAdapter(productJpaRepository, productPersistenceMapper);
-    }
-    @Bean
-    public InventoryRepositoryPort inventoryRepositoryPort(InventoryJpaRepository inventoryJpaRepository, InventoryPersistenceMapper inventoryPersistenceMapper) {
-        return new MySQLInventoryRepositoryAdapter(inventoryJpaRepository, inventoryPersistenceMapper);
-    }
     @Bean
     public InvoiceRepositoryPort invoiceRepositoryPort(InvoiceJpaRepository invoiceJpaRepository, InvoicePersistenceMapper invoicePersistenceMapper) {
         return new MySQLInvoiceRepositoryAdapter(invoiceJpaRepository, invoicePersistenceMapper);

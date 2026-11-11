@@ -1,4 +1,4 @@
-package application.domain.services.catalog;
+package application.domain.services.product;
 
 import application.domain.models.Product;
 import application.domain.ports.in.RegisterProductUseCase;

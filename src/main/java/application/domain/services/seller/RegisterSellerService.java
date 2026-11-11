@@ -1,24 +1,23 @@
 package application.domain.services.seller;
 
 import application.domain.models.Seller;
-import application.domain.ports.in.RegisterSellerUseCase;
 import application.domain.ports.out.SellerRepositoryPort;
 import org.springframework.stereotype.Service;
 
-@Service
-public class RegisterSellerService implements RegisterSellerUseCase {
-    
-    private final SellerRepositoryPort sellerRepository;
+import java.util.UUID;
 
-    public RegisterSellerService(SellerRepositoryPort sellerRepository) {
-        this.sellerRepository = sellerRepository;
+@Service
+public class RegisterSellerService {
+
+    private final SellerRepositoryPort sellerRepositoryPort;
+
+    public RegisterSellerService(SellerRepositoryPort sellerRepositoryPort) {
+        this.sellerRepositoryPort = sellerRepositoryPort;
     }
 
-    @Override
-    public Seller registerSeller(Seller seller) {
-        if (seller == null) {
-            throw new IllegalArgumentException("Seller to register cannot be null");
-        }
-        return sellerRepository.save(seller);
+    public Seller register(String storeName, String email) {
+        String sellerId = "seller-" + UUID.randomUUID().toString().substring(0, 8);
+        Seller seller = new Seller(sellerId, storeName, email, "ACTIVE");
+        return sellerRepositoryPort.save(seller);
     }
 }

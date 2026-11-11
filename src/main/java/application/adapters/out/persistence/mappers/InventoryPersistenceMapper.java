@@ -8,29 +8,23 @@ import org.springframework.stereotype.Component;
 public class InventoryPersistenceMapper {
 
     public InventoryEntity toEntity(Inventory inventory) {
-        if (inventory == null) return null;
-
-        InventoryEntity entity = new InventoryEntity();
-        entity.setInventoryId(inventory.getInventoryId());
-        entity.setProductId(inventory.getProduct() != null ? inventory.getProduct().getProductId() : null);
-        entity.setWarehouseId(null); // Se asociará cuando implementes Warehouse por completo
-        entity.setAvailableQuantity(inventory.getAvailableQuantity());
-        entity.setReservedQuantity(inventory.getReservedQuantity());
-
-        return entity;
+        return new InventoryEntity(
+                inventory.getInventoryId(),
+                inventory.getProductId(),
+                inventory.getSellerId(),
+                inventory.getAvailableQuantity(),
+                0, // reservedQuantity por defecto en el mapeo
+                inventory.getWarehouseLocation()
+        );
     }
 
     public Inventory toDomain(InventoryEntity entity) {
-        if (entity == null) return null;
-
-        // Instanciamos con null en Product y Warehouse temporalmente para cumplir el constructor del dominio
-        Inventory inventory = new Inventory(
-            entity.getInventoryId(),
-            null, // Product
-            null, // Warehouse
-            entity.getAvailableQuantity()
+        return new Inventory(
+                entity.getInventoryId(),
+                entity.getProductId(),
+                entity.getSellerId(),
+                entity.getAvailableQuantity(),
+                entity.getWarehouseLocation()
         );
-        
-        return inventory;
     }
 }

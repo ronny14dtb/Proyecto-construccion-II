@@ -5,5 +5,5 @@ import java.util.Optional;
 
 public interface SellerRepositoryPort {
     Seller save(Seller seller);
-    Optional<Seller> findById(String id);
+    Optional<Seller> findBySellerId(String sellerId);
 }
