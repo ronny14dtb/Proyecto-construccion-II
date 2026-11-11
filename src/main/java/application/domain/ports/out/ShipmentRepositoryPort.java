@@ -5,5 +5,5 @@ import java.util.Optional;
 
 public interface ShipmentRepositoryPort {
     Shipment save(Shipment shipment);
-    Optional<Shipment> findById(String id);
+    Optional<Shipment> findById(String shipmentId);
 }

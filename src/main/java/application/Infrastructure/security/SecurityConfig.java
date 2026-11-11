@@ -27,8 +27,10 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable()) 
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/api/users/register", "/api/users/login","/api/carts/**", "/api/orders/**").permitAll() 
+                .requestMatchers("/api/auth/**", "/api/users/register", "/api/users/login", "/api/orders/**").permitAll()
+                .requestMatchers("/api/shipments", "/api/shipments/**").permitAll() 
                 .requestMatchers("/api/returns", "/api/returns/**").permitAll()
+                .requestMatchers("/api/reports/**").permitAll()
 
                 .anyRequest().authenticated() 
             )

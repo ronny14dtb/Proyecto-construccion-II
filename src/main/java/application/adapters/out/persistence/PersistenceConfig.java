@@ -28,13 +28,10 @@ import application.domain.ports.out.InvoiceRepositoryPort;
 import application.domain.ports.out.OrderRepositoryPort;
 import application.domain.ports.out.UserRepositoryPort;
 import application.domain.ports.out.WarehouseRepositoryPort;
-// Imports de Product (Seguirán en rojo hasta que crees los archivos)
 import application.adapters.out.persistence.mappers.ProductPersistenceMapper;
 import application.domain.ports.out.ProductRepositoryPort;
-import application.domain.ports.out.RefundRepositoryPort;
 import application.domain.ports.out.SellerRepositoryPort;
-import application.domain.ports.out.ShipmentRepositoryPort;
-import application.domain.ports.out.ShoppingCartRepositoryPort;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -74,10 +71,7 @@ public class PersistenceConfig {
     public SellerRepositoryPort sellerRepositoryPort(SellerJpaRepository sellerJpaRepository, SellerPersistenceMapper sellerPersistenceMapper) {
         return new MySQLSellerRepositoryAdapter(sellerJpaRepository, sellerPersistenceMapper);
     }
-    @Bean
-    public ShipmentRepositoryPort shipmentRepositoryPort(ShipmentJpaRepository shipmentJpaRepository, ShipmentPersistenceMapper shipmentPersistenceMapper) {
-        return new MySQLShipmentRepositoryAdapter(shipmentJpaRepository, shipmentPersistenceMapper);
-    }
+    
     @Bean
     public WarehouseRepositoryPort warehouseRepositoryPort(WarehouseJpaRepository warehouseJpaRepository, WarehousePersistenceMapper warehousePersistenceMapper) {
         return new MySQLWarehouseRepositoryAdapter(warehouseJpaRepository, warehousePersistenceMapper);

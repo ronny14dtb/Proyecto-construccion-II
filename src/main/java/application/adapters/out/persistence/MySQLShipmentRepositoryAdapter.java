@@ -5,9 +5,11 @@ import application.adapters.out.persistence.mappers.ShipmentPersistenceMapper;
 import application.adapters.out.persistence.repositories.jpa.ShipmentJpaRepository;
 import application.domain.models.Shipment;
 import application.domain.ports.out.ShipmentRepositoryPort;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public class MySQLShipmentRepositoryAdapter implements ShipmentRepositoryPort {
 
     private final ShipmentJpaRepository jpaRepository;
@@ -21,12 +23,12 @@ public class MySQLShipmentRepositoryAdapter implements ShipmentRepositoryPort {
     @Override
     public Shipment save(Shipment shipment) {
         ShipmentEntity entity = mapper.toEntity(shipment);
-        ShipmentEntity savedEntity = jpaRepository.save(entity);
-        return mapper.toDomain(savedEntity);
+        ShipmentEntity saved = jpaRepository.save(entity);
+        return mapper.toDomain(saved);
     }
 
     @Override
-    public Optional<Shipment> findById(String id) {
-        return jpaRepository.findById(id).map(mapper::toDomain);
+    public Optional<Shipment> findById(String shipmentId) {
+        return jpaRepository.findByShipmentId(shipmentId).map(mapper::toDomain);
     }
 }
