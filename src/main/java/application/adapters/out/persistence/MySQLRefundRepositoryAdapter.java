@@ -5,11 +5,10 @@ import application.adapters.out.persistence.mappers.RefundPersistenceMapper;
 import application.adapters.out.persistence.repositories.jpa.RefundJpaRepository; // Tu repo existente
 import application.domain.models.ReturnRequest;
 import application.domain.ports.out.RefundRepositoryPort;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
-@Component
+@Repository
 public class MySQLRefundRepositoryAdapter implements RefundRepositoryPort {
 
     private final RefundJpaRepository jpaRepository;

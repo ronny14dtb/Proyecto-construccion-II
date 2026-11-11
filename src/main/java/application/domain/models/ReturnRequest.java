@@ -12,6 +12,7 @@ public class ReturnRequest {
         this.orderId = orderId;
         this.reason = reason;
     }
+    
 
     public String getReturnId() { return returnId; }
     public void setReturnId(String returnId) { this.returnId = returnId; }

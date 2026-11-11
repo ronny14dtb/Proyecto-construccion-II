@@ -6,5 +6,6 @@ public enum OrderStatus {
     PAGADO,
     DESPACHADO,
     ENTREGADO,
+    PENDIENTE,
     FINALIZADO
 }

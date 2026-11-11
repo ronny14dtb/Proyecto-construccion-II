@@ -43,12 +43,12 @@ public class CreateOrderService implements CreateOrderUseCase {
         }
 
         // 2. Creación perezosa del comprador si no existe
-        Buyer buyer = buyerRepository.findById(idLong)
-                .orElseGet(() -> {
-                    System.out.println("Comprador no encontrado. Creando registro automático para ID: " + idLong);
-                    Buyer newBuyer = new Buyer(buyerId); 
-                    return buyerRepository.save(newBuyer);
-                });
+      Buyer buyer = buyerRepository.findByBuyerId(buyerId)
+        .orElseGet(() -> {
+            System.out.println("Comprador no encontrado. Creando registro automático para: " + buyerId);
+            Buyer newBuyer = new Buyer(buyerId); 
+            return buyerRepository.save(newBuyer);
+        });
 
         // 3. Consultamos el carrito en MongoDB usando el puerto
         ShoppingCart cart = shoppingCartRepository.findById(buyerId)
@@ -59,7 +59,6 @@ public class CreateOrderService implements CreateOrderUseCase {
 
         // 5. Creamos la orden con el comprador
         Order newOrder = new Order(finalOrderId, buyer);
-        newOrder.setStatus("PENDIENTE");
 
         // 6. Guardamos la orden en MySQL
         return orderRepository.save(newOrder);

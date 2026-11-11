@@ -69,10 +69,7 @@ public class PersistenceConfig {
     public OrderRepositoryPort orderRepositoryPort(OrderJpaRepository orderJpaRepository, OrderPersistenceMapper orderPersistenceMapper) {
         return new MySQLOrderRepositoryAdapter(orderJpaRepository, orderPersistenceMapper);
     }
-    @Bean
-    public RefundRepositoryPort refundRepositoryPort(RefundJpaRepository refundJpaRepository, RefundPersistenceMapper refundPersistenceMapper) {
-        return new MySQLRefundRepositoryAdapter(refundJpaRepository, refundPersistenceMapper);
-    }
+   
     @Bean
     public SellerRepositoryPort sellerRepositoryPort(SellerJpaRepository sellerJpaRepository, SellerPersistenceMapper sellerPersistenceMapper) {
         return new MySQLSellerRepositoryAdapter(sellerJpaRepository, sellerPersistenceMapper);
